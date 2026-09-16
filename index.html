@@ -102,6 +102,7 @@
 <body>
 
 <header>
+       <a href="#quote-request" style="display:inline-block;background:#fff;color:#12324f;padding:10px 18px;border-radius:8px;font-weight:700;text-decoration:none;margin-bottom:12px;">Request a Quote</a>
     <h1>Nerd Surgery IT</h1>
     <p class="tagline">Friendly, honest computer help for your home or business</p>
 </header>
@@ -304,6 +305,34 @@
         <a class="btn btn-call" href="tel:+16613797335">📞 Call or Text (661) 379-7335</a>
         <a class="btn btn-email" href="mailto:info@nsit-solutions.net">✉️ Email info@nsit-solutions.net</a>
     </section>
+
+
+
+       <section id="quote-request">
+                  <h2>Request a Quote</h2>
+               <p style="font-size:0.9rem;color:#55636d;margin-bottom:12px;">Tell us a little about what you need and we’ll get back to you.</p>
+               <p style="background:#fff4d6;border:1px solid #e6c86e;border-radius:8px;padding:10px;font-size:0.85rem;color:#5c4810;margin-bottom:14px;"><b>Privacy warning:</b> Do not submit passwords, payment information, or sensitive credentials.</p>
+               <form action="https://formspree.io/f/xqpakkba" method="POST">
+                           <label for="name">Name</label>
+                           <input id="name" name="name" type="text" required>
+                           <label for="phone">Phone</label>
+                           <input id="phone" name="phone" type="tel" required>
+                           <label for="email">Email</label>
+                           <input id="email" name="email" type="email" required>
+                           <label for="customer-type">Customer type</label>
+                           <select id="customer-type" name="customer_type" required><option value="">Select one</option><option>Home user</option><option>Small business</option><option>Other</option></select>
+                           <label for="computer-type">Computer type</label>
+                           <input id="computer-type" name="computer_type" type="text" placeholder="Desktop, laptop, server, etc." required>
+                           <label for="service">Preferred service</label>
+                           <select id="service" name="preferred_service" required><option value="">Select one</option><option>Remote support</option><option>On-site service</option><option>Repair or diagnostics</option><option>Hardware upgrade</option><option>Server or storage help</option><option>Not sure</option></select>
+                           <label for="urgency">Urgency</label>
+                           <select id="urgency" name="urgency" required><option value="">Select one</option><option>Routine</option><option>This week</option><option>Urgent</option><option>Emergency</option></select>
+                           <label for="problem">Problem description</label>
+                           <textarea id="problem" name="problem_description" rows="5" required></textarea>
+                           <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;"><input type="checkbox" name="contact_consent" value="Yes" required style="width:auto;margin-top:4px;"> I consent to being contacted about this quote request.</label>
+                           <button class="btn btn-call" type="submit">Send Quote Request</button>
+               </form>
+       </section>
 
 </main>
 
