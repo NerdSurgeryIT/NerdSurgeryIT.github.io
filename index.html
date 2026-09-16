@@ -97,6 +97,31 @@
         padding: 10px 0;
     }
     footer a { color: #fff; text-decoration: none; font-weight: 700; padding: 8px 16px; }
+    .quote-form { display: flex; flex-direction: column; gap: 16px; }
+    .quote-field { display: flex; flex-direction: column; gap: 6px; }
+    .quote-field label, .quote-consent label { font-weight: 700; color: #12324f; }
+    .quote-field input, .quote-field select, .quote-field textarea {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 12px;
+        border: 1px solid #aebdca;
+        border-radius: 6px;
+        background: #fff;
+        color: #1f2a33;
+        font: inherit;
+    }
+    .quote-field textarea { min-height: 130px; resize: vertical; }
+    .quote-field input:focus, .quote-field select:focus, .quote-field textarea:focus {
+        outline: 3px solid rgba(46,134,193,0.25);
+        border-color: #2e86c1;
+    }
+    .quote-consent { display: flex; align-items: flex-start; gap: 8px; }
+    .quote-consent input { width: 18px; height: 18px; flex: 0 0 auto; margin-top: 3px; }
+    .quote-form .btn { width: 100%; max-width: none; border: 0; cursor: pointer; }
+    @media (max-width: 480px) {
+        section#quote-request { padding: 16px; }
+        .quote-form { gap: 14px; }
+    }
 </style>
 </head>
 <body>
@@ -308,31 +333,69 @@
 
 
 
-       <section id="quote-request">
-                  <h2>Request a Quote</h2>
-               <p style="font-size:0.9rem;color:#55636d;margin-bottom:12px;">Tell us a little about what you need and we’ll get back to you.</p>
-               <p style="background:#fff4d6;border:1px solid #e6c86e;border-radius:8px;padding:10px;font-size:0.85rem;color:#5c4810;margin-bottom:14px;"><b>Privacy warning:</b> Do not submit passwords, payment information, or sensitive credentials.</p>
-               <form action="https://formspree.io/f/xqpakkba" method="POST">
-                           <label for="name">Name</label>
-                           <input id="name" name="name" type="text" required>
-                           <label for="phone">Phone</label>
-                           <input id="phone" name="phone" type="tel" required>
-                           <label for="email">Email</label>
-                           <input id="email" name="email" type="email" required>
-                           <label for="customer-type">Customer type</label>
-                           <select id="customer-type" name="customer_type" required><option value="">Select one</option><option>Home user</option><option>Small business</option><option>Other</option></select>
-                           <label for="computer-type">Computer type</label>
-                           <input id="computer-type" name="computer_type" type="text" placeholder="Desktop, laptop, server, etc." required>
-                           <label for="service">Preferred service</label>
-                           <select id="service" name="preferred_service" required><option value="">Select one</option><option>Remote support</option><option>On-site service</option><option>Repair or diagnostics</option><option>Hardware upgrade</option><option>Server or storage help</option><option>Not sure</option></select>
-                           <label for="urgency">Urgency</label>
-                           <select id="urgency" name="urgency" required><option value="">Select one</option><option>Routine</option><option>This week</option><option>Urgent</option><option>Emergency</option></select>
-                           <label for="problem">Problem description</label>
-                           <textarea id="problem" name="problem_description" rows="5" required></textarea>
-                           <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;"><input type="checkbox" name="contact_consent" value="Yes" required style="width:auto;margin-top:4px;"> I consent to being contacted about this quote request.</label>
-                           <button class="btn btn-call" type="submit">Send Quote Request</button>
-               </form>
-       </section>
+    <section id="quote-request">
+        <h2>Request a Quote</h2>
+        <p style="font-size:0.9rem;color:#55636d;margin-bottom:12px;">Tell us a little about what you need and we’ll get back to you.</p>
+        <p style="background:#fff4d6;border:1px solid #e6c86e;border-radius:8px;padding:10px;font-size:0.85rem;color:#5c4810;margin-bottom:14px;"><b>Privacy warning:</b> Do not submit passwords, payment information, or sensitive credentials.</p>
+        <form class="quote-form" action="https://formspree.io/f/xqpakkba" method="POST">
+            <div class="quote-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name" required>
+            </div>
+            <div class="quote-field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="Best number to reach you" autocomplete="tel" required>
+            </div>
+            <div class="quote-field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+            <div class="quote-field">
+                <label for="customer-type">Customer type</label>
+                <select id="customer-type" name="customer_type" required>
+                    <option value="">Select one</option>
+                    <option>Home user</option>
+                    <option>Small business</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="quote-field">
+                <label for="computer-type">Computer type</label>
+                <input id="computer-type" name="computer_type" type="text" placeholder="Desktop, laptop, server, etc." required>
+            </div>
+            <div class="quote-field">
+                <label for="service">Preferred service</label>
+                <select id="service" name="preferred_service" required>
+                    <option value="">Select one</option>
+                    <option>Remote support</option>
+                    <option>On-site service</option>
+                    <option>Repair or diagnostics</option>
+                    <option>Hardware upgrade</option>
+                    <option>Server or storage help</option>
+                    <option>Not sure</option>
+                </select>
+            </div>
+            <div class="quote-field">
+                <label for="urgency">Urgency</label>
+                <select id="urgency" name="urgency" required>
+                    <option value="">Select one</option>
+                    <option>Routine</option>
+                    <option>This week</option>
+                    <option>Urgent</option>
+                    <option>Emergency</option>
+                </select>
+            </div>
+            <div class="quote-field">
+                <label for="problem">Problem description</label>
+                <textarea id="problem" name="problem_description" rows="5" placeholder="What do you need help with? Please do not include passwords or other sensitive information." required></textarea>
+            </div>
+            <div class="quote-consent">
+                <input id="contact-consent" type="checkbox" name="contact_consent" value="Yes" required>
+                <label for="contact-consent">I consent to being contacted about this quote request.</label>
+            </div>
+            <button class="btn btn-call" type="submit">Send Quote Request</button>
+        </form>
+    </section>
 
 </main>
 
