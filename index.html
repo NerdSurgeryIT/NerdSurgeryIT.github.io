@@ -337,7 +337,7 @@
         <h2>Request a Quote</h2>
         <p style="font-size:0.9rem;color:#55636d;margin-bottom:12px;">Tell us a little about what you need and we’ll get back to you.</p>
         <p style="background:#fff4d6;border:1px solid #e6c86e;border-radius:8px;padding:10px;font-size:0.85rem;color:#5c4810;margin-bottom:14px;"><b>Privacy warning:</b> Do not submit passwords, payment information, or sensitive credentials.</p>
-        <form class="quote-form" action="https://formspree.io/f/xqpakkba" method="POST">
+        <form id="quote-form" class="quote-form" action="https://formspree.io/f/xqpakkba" method="POST">
             <div class="quote-field">
                 <label for="name">Name</label>
                 <input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name" required>
@@ -398,6 +398,22 @@
     </section>
 
 </main>
+
+<script>
+    (() => {
+        const quoteForm = document.getElementById('quote-form');
+        if (!quoteForm) return;
+
+        // Clear the form before leaving and when the browser restores this page
+        // after the customer returns from Formspree's confirmation screen.
+        quoteForm.addEventListener('submit', () => {
+            window.setTimeout(() => quoteForm.reset(), 0);
+        });
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) quoteForm.reset();
+        });
+    })();
+</script>
 
 <footer>
     <a href="tel:+16613797335">📞 Call</a>
